@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MineSweeper</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <meta name="description" content="Demo project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+    <script src="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/angular-ui/bower-ui-grid/master/ui-grid.min.css">
+    <style type="text/css">
+      body{
+        font-family: "Avenir";
+      }
+      .grid {
+        max-width: 1000px;
+        height: 600px;
+        margin: 0 auto;
+        margin-top: 1%;
+        font-family: 'Helvetica';
+        font-size: 17px;
+       }
+       #top {
+        margin-left: 33%;
+       }
+       #bottom {
+        margin-left: 40%;
+        margin-top: 1%;
+       }
+       input {
+        width: 50px;
+       }
+       .top{
+        width: 90px;
+       }
+       h1 {
+        text-align: center;
+       }
+    </style>
+  </head>
+  <body ng-app = 'minesweeper'>
+    <h1>Angular MineSweeper</h1>
+    <div ng-controller = 'initializeGame'>
+      <div id = 'top'>
+      Input Grid Size and Number of Bombs
+      <input class = 'top' type="text" placeholder='Size (5-19)' ng-model='size'>
+      <input class = 'top' type="text" placeholder='Num. Bombs' ng-model='bomb'>
+      <button class = 'btn btn-success' ng-click = 'startGame ()'>(Re) Start Game</button>
+      </div>
+      <div id='bottom'>
+        <input type="text" placeholder='row' ng-model='row'>
+        <input type="text" placeholder='col' ng-model='col'>
+        <button class = 'btn btn-primary' ng-click = 'exposeSpace()'>Expose</button>
+        <input type="text" placeholder='row' ng-model='row2'> 
+        <input type="text" placeholder='col' ng-model='col2'> 
+        <button class = 'btn btn-danger' ng-click = 'flagSpace()'>Flag</button>
+      </div>
+      <div id="grid1" ui-grid="{ 
+      data: myData,
+      enableColumnMenus: false,
+      enableFiltering: false
+      }" class="grid"></div>
+    </div>
+    <script src="./app.js"></script>
+    <script src="./factory/TableCreate.js"></script>
+  </body>
+</html>
